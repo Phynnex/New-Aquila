@@ -1,0 +1,122 @@
+.sign-in-body{
+    background-image: url("https://images.unsplash.com/photo-1597773150796-e5c14ebecbf5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Nnx8YWJzdHJhY3QlMjBiYWNrZ3JvdW5kfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60");
+    background-position: cover;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+
+.sign-section {
+    width: 60%;
+    /* height: 100vh; */
+    background: #fff;
+    padding-top: 3rem;
+    
+}
+
+.form-div {
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
+    align-items: center;
+}
+
+.form-input {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-input input {
+    width: 20rem;
+    padding: 16px 40px 16px 20px;
+    background: #EDF0F5;
+    border: none;
+    outline: none;
+    margin: 5px 0;
+    font-weight: 400;
+}
+
+.form-input span {
+    display: none;
+    color: red;
+    font-size: 8px;
+    font-weight: 500;
+}
+
+.form-div img {
+    width: 15rem;
+}
+
+.form-div p {
+    font-size: 25px;
+    font-weight: 400;
+    margin: 1rem 0;
+}
+
+.form-input input:invalid[focused='true']~span {
+    display: block;
+}
+
+.form-input input:invalid[focused='true']~input {
+    border-color: red;
+}
+
+
+/* Login CSS */
+
+.login-body{
+    background-image: url("https://images.unsplash.com/photo-1597773150796-e5c14ebecbf5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Nnx8YWJzdHJhY3QlMjBiYWNrZ3JvdW5kfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60");
+    background-position: cover;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.login-section {
+    width: 60%;
+    height: 100vh;
+    background: #fff;
+    padding-top: 3rem;
+   
+}
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.login-form input {
+    width: 20rem;
+    padding: 16px 40px 16px 20px;
+    background: #EDF0F5;
+    border: none;
+    outline: none;
+    margin: 5px 0;
+    font-weight: 400;
+}
+
+.passInput {
+    position: relative;
+}
+
+.passIcon {
+    position: absolute;
+    left: 36.5rem;
+    top: 17rem;
+    color: #91868A;
+    cursor: pointer;
+}
+
+
+/* Button */
+
+button {
+    width: 100%;
+    margin: 20px 0px 0px 0px;
+    padding: 15px;
+    border: none;
+    background: #335AA3;
+    color: #fff;
+    font-weight: 600;
+    cursor: pointer;
+}

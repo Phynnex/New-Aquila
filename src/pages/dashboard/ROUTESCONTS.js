@@ -1,0 +1,12 @@
+export const DASHBOARDHOME = `/dashboard`
+export const SCAN = `/dashboard/scan`
+export const MONITOR = `/dashboard/monitor`
+export const PROTECT = `/dashboard/protect`
+export const SETTINGS = `/dashboard/settings`
+export const LOGOUT = `/logout`
+export const DASHBOARD_UPLOAD = `/dashboard/upload`
+export const SCAN_RESULT = `/dashboard/scan/result`
+export const SCAN_RESULT_IOS = `/dashboard/scan/IOS`
+export const UPLOAD_RESULT = `/dashboard/upload-result/`
+export const SCAN_DETAILS = `/dashboard/scan/details`
+export const SCAN_DETAILS_IOS = `/dashboard/scan/details-ios`

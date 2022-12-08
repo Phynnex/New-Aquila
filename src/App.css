@@ -1,0 +1,26 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Poppins:wght@300;400;500;600;700&display=swap');
+
+body {
+	/* box-sizing: border-box; */
+	margin: 0;
+	padding: 0;
+	/* background: #1A303D; */
+	font-family: "Poppins", sans-serif;
+	
+}
+
+ul {
+	list-style-type: none;
+	padding: 0;
+	margin: 0;
+}
+
+.sides {
+	padding: 0 6rem;
+}
+
+@media screen and (max-width: 600px) and (min-width: 380px) {
+	.sides {
+		padding: 0;
+	}
+}

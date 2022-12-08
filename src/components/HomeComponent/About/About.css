@@ -1,0 +1,142 @@
+.about-container {
+    /* position: absolute; */
+    background: #fff;
+    height: 1036;
+    
+}
+  
+.about-title{
+    font-style: normal;
+    font-weight: 700;
+    font-size: 2.5vw;
+    line-height: 20px;
+    letter-spacing: 0.06em;
+    color: #0171DB;
+   margin: 4rem 0rem;
+}
+
+@media screen and (max-width: 600px) and (min-width: 380px) {
+    .about-title {
+        font-size: 3.5vw;
+        text-align: center;
+    }
+}
+
+
+.title-container{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.about-background {
+    background: #0171DB;
+    height: 598px;
+    margin-top: -12rem;
+   
+}
+
+.about-text {
+    width: 800;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+
+
+
+.why-aquila {
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 20px;
+    letter-spacing: 0.06em;
+    color: #FFFFFF;
+    margin-top: 25rem;
+}
+
+@media screen and (max-width: 600px) and (min-width: 380px) {
+    .why-aquila {
+        margin-top: 20rem;
+    }
+}
+
+.aquila-text {
+    font-weight: 500;
+    font-size: 1rem;
+    line-height: 30px;
+    text-align: center;
+    letter-spacing: 0.06em;
+    color: #FFFFFF;
+}
+
+@media screen and (max-width: 600px) and (min-width: 380px){
+    .aquila-text {
+        font-size: 2.5vw;
+        padding: 0px 20px;
+        line-height: 20px;
+
+
+
+    }
+}
+
+
+
+.free-trial {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: 2rem 0rem;
+}
+
+@media screen and (max-width: 600px) and (min-width: 380px) {
+    .free-trial {
+        margin: 2.5rem 1rem;
+    }
+}
+
+
+.trial-text {
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 40px;
+    letter-spacing: 0.06em;
+    color: #000000;
+}
+
+@media screen and (max-width: 600px) and (min-width: 380px){
+    .trial-text {
+        font-size: 12px;
+    }
+}
+
+.trial-btn {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 35px;
+    gap: 10px;
+    width: 147px;
+    height: 40px;
+    left: 1047px;
+    top: 1577px;
+    background: #0171DB;
+    border-radius: 20px;
+    border: none;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 20px;
+    letter-spacing: 0.06em;
+    color: #FFFFFF;
+}
+
+.trial-btn:hover {
+    color: #0171DB;
+    background-color: transparent;
+    border: 2px solid #0171DB;
+    border-radius: 20px;
+}
