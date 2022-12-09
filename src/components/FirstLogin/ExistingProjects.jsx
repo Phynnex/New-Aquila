@@ -76,7 +76,7 @@ const ExistingProjects = () => {
     useEffect(() => {
         // declare the data fetching function
         const fetchData = async () => {
-          const data = await fetch('http://aquiladev.azurewebsites.net/api/projects/');
+          const data = await fetch('http://ec2-18-189-7-106.us-east-2.compute.amazonaws.com:8000/api/projects/');
         //   localStorage.setItem('user', JSON.stringify(data));
         // axios.defaults.headers.common['Authorization'] = `Bearer ${data['access']}`;
           setProject_name(data.data);
@@ -102,7 +102,7 @@ const ExistingProjects = () => {
         formData.set('project_name', project_name, file)
 
         try {
-            const res = await axios.post('http://aquiladev.azurewebsites.net/api/uploadandscan/', formData, {
+            const res = await axios.post('http://ec2-18-189-7-106.us-east-2.compute.amazonaws.com:8000/api/uploadandscan/', formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data'
 

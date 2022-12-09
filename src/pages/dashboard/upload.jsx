@@ -66,7 +66,7 @@ const Upload = () => {
     //   useEffect(() => {
     //     const fetchName = async () => {
     //       const {data} = await axios
-    //         .get("https://aquiladev.herokuapp.com/api/projects/")
+    //         .get("http://ec2-18-189-7-106.us-east-2.compute.amazonaws.com:8000/api/projects/")
     //         // .catch((error) => {
     //         //   console.log(error);
     //         //   setFaqsErr(error);

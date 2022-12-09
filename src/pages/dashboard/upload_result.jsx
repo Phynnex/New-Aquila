@@ -26,7 +26,7 @@ const UploadResult = () => {
 
     try {
       const scan_request = await http.post(
-        "http://aquiladev.azurewebsites.net/api/scan/",
+        "http://ec2-18-189-7-106.us-east-2.compute.amazonaws.com:8000/api/scan/",
         scanObject
       );
 
