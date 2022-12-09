@@ -1,6 +1,9 @@
 import http from "services/httpService";
 import { checkExpiredUserToken, getUserToken } from "utils";
+import { toast } from "react-toastify";
+
 import {
+
   USER_LOADED_SUCCESS,
   USER_LOADED_FAIL,
   AUTHENTICATED_SUCCESS,
@@ -91,31 +94,30 @@ export const signup =
       username,
       company,
       password,
-      confirmPassword,
-     
-    };
+      confirmPassword};
 
     try {
       const res = await http.post(
         `${process.env.REACT_APP_API_URL}/auth/register/`,
         body
       );
-      
-        console.log(res, 'response sucess')
+
       dispatch({
         type: SIGNUP_SUCCESS,
         payload: res.data,
       });
-      return res
+      toast.success("Registration Successfull, kindly check your email to verify")
     } catch (err) {
       dispatch({
         type: SIGNUP_FAIL,
       });
-      console.log(err, 'response fail')
-      return err
+      let errors = {}
+      if (err.response.status === 400) {
+        toast.error = JSON.stringify ({errors})
+      } else {
+        toast.error('Network Error')
+      }
     }
-    
-
   };
 
 

@@ -1,20 +1,27 @@
 import React, { useState } from "react";
 import axios from "axios";
 // import { BiShow, BiHide } from 'react-icons/bi'
-import Button from "../SignUp/Button";
+// import Button from "../SignUp/Button";
 import "../SignUp/newcss.css";
 import Logo from "../../assets/DashboardLogo.png";
 import { Link, Redirect } from "react-router-dom";
+import  Backdrop  from '@mui/material/Backdrop';
+import  CircularProgress  from '@mui/material/CircularProgress';
+import { Button } from "globalStyles/style";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [navigate, setNavigate] = useState(false);
+  const [isLoading, setisLoading] = useState(false);
+
 
   // const [show, setShow] = useState(true)
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setisLoading(true);
+
     const { data } = await axios.post('http://aquiladev.azurewebsites.net/api/token/', {
       email, password
     });
@@ -69,8 +76,27 @@ const Login = () => {
             >
               Forget Password?
             </Link>
-
-            <Button text="Sign in to Aquila" />
+            <Button
+              mt="20px"
+              w="100%"
+              p="10px"
+              bc="#5B5B5B"
+              color="#EDEFF5"
+              fs="18px"
+              br="3px"
+              mr="90px"
+              type="submit"
+            >
+              {isLoading ? (
+                <Backdrop open>
+                  <CircularProgress color="inherit" />
+                </Backdrop>
+              ) : (
+                "Sign in to Aquila"
+              )}
+              
+            </Button>
+            {/* <Button text="Sign in to Aquila" /> */}
             <Link to="sign-up"
               style={{
                 fontSize: "16px",

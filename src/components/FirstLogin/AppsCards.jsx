@@ -1,5 +1,5 @@
 import { useState, useEffect, Fragment } from "react";
-import { Redirect } from "react-router-dom";
+import { Redirect, useHistory } from "react-router-dom";
 import axios from "axios";
 import Modal from "react-modal";
 // import BeatLoader from "react-spinners/BeatLoader";
@@ -13,6 +13,7 @@ import { Input } from "../../globalStyles/style";
 import { checkExpiredUserToken } from "utils";
 // import { setDatasets } from "react-chartjs-2/dist/utils";
 import { IoLogoAppleAppstore, IoLogoGooglePlaystore } from "react-icons/io5";
+import http from "services/httpService";
 
 const customStyles = {
   content: {
@@ -76,7 +77,6 @@ const ExistingProject = styled.div`
 const AppsCards = () => {
   const [name, setName] = useState("");
   const [project, setProject] = useState("");
-  const [newProject, setNewProject] = useState("");
   const [navigate, setNavigate] = useState(false);
   const [upload, setUpload] = useState(false);
   // const [data, setData] = useState();
@@ -90,14 +90,14 @@ const AppsCards = () => {
   const [message, setMessage] = useState("");
   const [uploadPercentage, setUploadPercentage] = useState(0);
   const [err, setErr] = useState(false);
-
+  let history = useHistory();
   // const history = useHistory();
 
   useEffect(() => {
     checkExpiredUserToken();
 
     async function fetchData() {
-      const request = await axios.get(
+      const request = await http.get(
         "http://aquiladev.azurewebsites.net/api/projects/"
       );
       setProject(request.data);
@@ -137,31 +137,20 @@ const AppsCards = () => {
     setIsOpen(false);
   }
 
-//   function openModal2(id) {
-    
-//     // project[id].apk ? <Redirect to='/dashboard'/> : setIsOpen2(true)
-//     if (project[id].apk)  {
-//         // return <Redirect to="/"/>;
-//         console.log('there is a file')
-//   }else {
-//         // setIsOpen2(true);
-//         // console.log('no file');
-//     }
-    
-//   }
+  
 
-const openModal2 = (id) => {
+  const openModal2 = (id) => {
     if (project[id].apk || project[id].ipa) {
+      history.push("/dashboard");
+      // console.log(project[id], 'check')
+    }
 
-    return <Redirect to="/dashboard/upload/" />;
-    // console.log(project[id], 'check')
-  } 
+    if (!project[id].apk && !project[id].ipa) {
+      setIsOpen2(true);
+    }
+    
 
-  if (!project[id].apk && !project[id].ipa){
-    setIsOpen2(true)
-
-  }
-}
+  };
 
   function afterOpenModal2() {}
   function closeModal2() {
@@ -285,7 +274,8 @@ const openModal2 = (id) => {
         </div>
       </Modal>
 
-      {project && project.map((CardsData, key) => (
+      {project &&
+        project.map((CardsData, key) => (
           <div key={key} onClick={() => openModal2(key)}>
             <ExistingProject
               key={key}
@@ -301,8 +291,8 @@ const openModal2 = (id) => {
                   justifyContent: "space-evenly",
                 }}
               >
-                {CardsData.apk && <IoLogoGooglePlaystore/>}
-                {CardsData.ipa && <IoLogoAppleAppstore/>}
+                {CardsData.apk && <IoLogoGooglePlaystore />}
+                {CardsData.ipa && <IoLogoAppleAppstore />}
               </div>
             </ExistingProject>
             <Modal

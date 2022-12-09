@@ -1,12 +1,15 @@
 import React, { useState } from "react";
 import InputForm from "./InputForm";
-import Button from "./Button";
+
 import "./newcss.css";
 import { Redirect, Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { signup } from "../../redux/actions/auth";
 // import { signupInput } from './data'
 import Logo from "../../assets/DashboardLogo.png";
+import  CircularProgress  from '@mui/material/CircularProgress';
+import Backdrop from '@mui/material/Backdrop';
+import { Button } from "globalStyles/style";
 
 const Signupnew = ({ signup, isAuthenticated }) => {
   const [isLoading, setisLoading] = useState(false);
@@ -39,6 +42,8 @@ const Signupnew = ({ signup, isAuthenticated }) => {
   const handleSubmit = (e) => {
     // setisLoading(true)
     e.preventDefault();
+    setisLoading(true);
+
     if (password === confirmPassword) {
         signup(username, company, email, password, confirmPassword )
         .then (() => { setAccountCreated(true)})
@@ -123,8 +128,27 @@ const Signupnew = ({ signup, isAuthenticated }) => {
                 value={formData[input.name]}
               />
             ))}
-
-            <Button text="Get Started Now" />
+  <Button
+              mt="20px"
+              w="100%"
+              p="10px"
+              bc="#5B5B5B"
+              color="#EDEFF5"
+              fs="18px"
+              br="3px"
+              mr="90px"
+              type="submit"
+            >
+              {isLoading ? (
+                <Backdrop open>
+                  <CircularProgress color="inherit" />
+                </Backdrop>
+              ) : (
+                "Sign in to Aquila"
+              )}
+              
+            </Button>
+            {/* <Button text="Get Started Now" /> */}
             <p
               style={{
                 fontSize: "16px",
