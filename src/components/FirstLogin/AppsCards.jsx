@@ -98,7 +98,7 @@ const AppsCards = () => {
 
     async function fetchData() {
       const request = await http.get(
-        "http://aquiladev.azurewebsites.net/api/projects/"
+        `${process.env.REACT_APP_API_URL}/api/projects/`
       );
       setProject(request.data);
       console.log(request.data, "hello");
@@ -116,7 +116,7 @@ const AppsCards = () => {
     checkExpiredUserToken();
 
     const { data } = await axios.post(
-      "http://aquiladev.azurewebsites.net/api/projects/",
+      `${process.env.REACT_APP_API_URL}/api/projects/`,
       { name }
     );
 
@@ -170,7 +170,7 @@ const AppsCards = () => {
     formData.set("project_name", project_name);
     try {
       const response2 = await axios.post(
-        "http://aquiladev.azurewebsites.net/api/upload/",
+        `${process.env.REACT_APP_API_URL}/api/upload/`,
         formData,
         {
           headers: {

@@ -136,7 +136,7 @@ const Upload = ({ location }) => {
 
   useEffect(() => {
     async function fetchData() {
-      const request = await axios.get('https://aquiladev.herokuapp.com/api/projects/');
+      const request = await axios.get(`${process.env.REACT_APP_API_URL}/api/projects/`);
       // setProject_name(request.data);
       console.log(request.data, 'hello')
       return request;
@@ -159,7 +159,7 @@ const Upload = ({ location }) => {
     formData.append("project_name", project_name);
     try {
       const response2 = await axios.post(
-        "http://aquiladev.azurewebsites.net/api/upload/",
+        `${process.env.REACT_APP_API_URL}/api/upload/`,
         formData,
         {
           onUploadProgress: (progressEvent) => {

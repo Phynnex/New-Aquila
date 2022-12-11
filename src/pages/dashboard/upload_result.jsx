@@ -26,7 +26,7 @@ const UploadResult = () => {
 
     try {
       const scan_request = await http.post(
-        "http://aquiladev.azurewebsites.net/api/scan/",
+        `${process.env.REACT_APP_API_URL}t/api/scan/`,
         scanObject
       );
 

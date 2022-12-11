@@ -1,5 +1,7 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import styled from "styled-components";
+import { checkExpiredUserToken } from 'utils';
+import http from './../../services/httpService';
 
 const CardContainer = styled.div`
   width: 500px;
@@ -30,7 +32,24 @@ const SubTitle = styled.p`
 `;
 
 const ScanAnalyzer = () => {
-  
+  const [files, setFiles] = useState([])
+  const [project, setProject] = useState('')
+
+  useEffect(() => {
+    checkExpiredUserToken();
+
+    async function fetchData() {
+      const request = await http.get(
+        `${process.env.REACT_APP_API_URL}/api/reports/?${project}`
+      );
+      // setFiles(request);
+      console.log(request, "report");
+      // return request;
+    }
+
+    fetchData();
+  }, []);
+
 
   
   return (
