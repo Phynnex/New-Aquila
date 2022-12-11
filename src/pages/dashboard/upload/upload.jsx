@@ -111,7 +111,7 @@ const Upload = ({ location }) => {
     checkExpiredUserToken();
     async function fetchData() {
       const request = await axios.get(
-        "https://aquiladev.herokuapp.com/api/projects/"
+        "http://ec2-18-189-7-106.us-east-2.compute.amazonaws.com:8000/api/projects/"
       );
 
       setProject(request.data);
@@ -159,7 +159,7 @@ const Upload = ({ location }) => {
     formData.append("project_name", project_name);
     try {
       const response2 = await axios.post(
-        `${process.env.REACT_APP_API_URL}/api/upload/`,
+        "http://ec2-18-189-7-106.us-east-2.compute.amazonaws.com:8000/api/upload/",
         formData,
         {
           onUploadProgress: (progressEvent) => {

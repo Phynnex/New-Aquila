@@ -22,7 +22,7 @@ const Login = () => {
     e.preventDefault();
     setisLoading(true);
 
-    const { data } = await axios.post("http://ec2-18-189-7-106.us-east-2.compute.amazonaws.com:8000/api/token/", {
+    const { data } = await axios.post('http://ec2-18-189-7-106.us-east-2.compute.amazonaws.com:8000/api/token/', {
       email, password
     });
     localStorage.setItem('user', JSON.stringify(data));
