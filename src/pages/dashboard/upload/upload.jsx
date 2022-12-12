@@ -2,7 +2,7 @@ import { Fragment, useState, useEffect } from "react";
 import Modal from "react-modal";
 
 import styled from "styled-components";
-import axios from "axios";
+// import axios from "axios";
 // import { useFormik } from "formik"
 // import * as Yup from "yup"
 import { Button, P } from "../../../globalStyles/style";
@@ -14,8 +14,8 @@ import UploadFile from "../../../assets/uploadFile.png";
 import { checkExpiredUserToken } from "utils";
 import http from "services/httpService";
 import { Redirect } from "react-router-dom";
-import OldProject from "assets/oldproject.png";
-import Message from "pages/dashboard/upload/Message";
+// import OldProject from "assets/oldproject.png";
+// import Message from "pages/dashboard/upload/Message";
 import Progress from "pages/dashboard/upload/Progress";
 
 // import "./styles.css";
@@ -36,24 +36,24 @@ const customStyles = {
   },
 };
 
-const ExistingProject = styled.div`
-  width: 280px;
-  height: 280px;
-  background: #5b5b5b;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  margin-top: 25px;
-  border-radius: 3px;
-  p {
-    font-weight: 400;
-    font-size: 22px;
-    line-height: 38px;
-    color: #fff;
-  }
-`;
+// const ExistingProject = styled.div`
+//   width: 280px;
+//   height: 280px;
+//   background: #5b5b5b;
+//   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+//   display: flex;
+//   flex-direction: column;
+//   justify-content: center;
+//   align-items: center;
+//   margin-top: 25px;
+//   border-radius: 3px;
+//   p {
+//     font-weight: 400;
+//     font-size: 22px;
+//     line-height: 38px;
+//     color: #fff;
+//   }
+// `;
 
 const CardContainer = styled.div`
   width: 85%;
@@ -97,11 +97,11 @@ const Upload = ({ location }) => {
   const [uploadedFile, setUploadedFile] = useState({});
 
   const [project, setProject] = useState("");
-  const [open, setOpen] = useState(false);
+  // const [open, setOpen] = useState(false);
   const [file, setFile] = useState(null);
   const [upload, setUpload] = useState(false);
-  const [error, setError] = useState(false);
-  const [isLoading, setisLoading] = useState(false);
+  // const [error, setError] = useState(false);
+  // const [isLoading, setisLoading] = useState(false);
 
   const [message, setMessage] = useState("");
   const [uploadPercentage, setUploadPercentage] = useState(0);
@@ -110,8 +110,8 @@ const Upload = ({ location }) => {
   useEffect(() => {
     checkExpiredUserToken();
     async function fetchData() {
-      const request = await axios.get(
-        "http://ec2-18-189-7-106.us-east-2.compute.amazonaws.com:8000/api/projects/"
+      const request = await http.get(
+        `${process.env.REACT_APP_API_URL}/api/projects/`
       );
 
       setProject(request.data);
@@ -136,7 +136,7 @@ const Upload = ({ location }) => {
 
   useEffect(() => {
     async function fetchData() {
-      const request = await axios.get(`${process.env.REACT_APP_API_URL}/api/projects/`);
+      const request = await http.get(`${process.env.REACT_APP_API_URL}/api/projects/`);
       // setProject_name(request.data);
       console.log(request.data, 'hello')
       return request;
@@ -158,8 +158,8 @@ const Upload = ({ location }) => {
     formData.append("file", file);
     formData.append("project_name", project_name);
     try {
-      const response2 = await axios.post(
-        "http://ec2-18-189-7-106.us-east-2.compute.amazonaws.com:8000/api/upload/",
+      const response2 = await http.post(
+        `${process.env.REACT_APP_API_URL}/api/upload/`,
         formData,
         {
           onUploadProgress: (progressEvent) => {
@@ -251,7 +251,7 @@ const Upload = ({ location }) => {
         </P>
 
         <P color="#5B5B5B" fw="700" fs="22px" mb="0px">
-        {project_name}
+        {project}
         </P>
 
         <P color="#5B5B5B" fw="700" fs="22px" mb="0px"></P>

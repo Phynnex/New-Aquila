@@ -21,6 +21,24 @@ function setJwt(jwt) {
   axios.defaults.headers.common["Authorization"] = `Bearer ${jwt}`;
 }
 
+
+axios.interceptors.request.use(function (error) {
+  const expectedError =
+    error.response &&
+    error.response.status >= 400 &&
+    error.response.status < 500;
+
+  if (!expectedError) {
+    logger.log(error);
+    if (error.Error === "Network Error") {
+      console.error("Network Error");
+    }
+  }
+
+  return Promise.reject(error);
+});
+
+
 let http = {
   get: axios.get,
   post: axios.post,
