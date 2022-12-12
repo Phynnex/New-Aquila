@@ -22,7 +22,7 @@ const Login = () => {
     e.preventDefault();
     setisLoading(true);
 
-    const { data } = await axios.post('http://aquiladev.azurewebsites.net/api/token/', {
+    const { data } = await axios.post('https://aquiladev.azurewebsites.net/api/token/', {
       email, password
     });
     localStorage.setItem('user', JSON.stringify(data));
