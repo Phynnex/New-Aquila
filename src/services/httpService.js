@@ -19,7 +19,8 @@ axios.interceptors.response.use(null, (error) => {
 
 function setJwt(jwt) {
   axios.defaults.headers.common["Authorization"] = `Bearer ${jwt}`;
-  axios.defaults.headers.set("Access-Control-Allow-Origin")
+  // axios.defaults.headers.set("Access-Control-Allow-Origin")
+  axios.defaults.headers.append('Access-Control-Allow-Origin', '*');
 
 }
 
@@ -48,4 +49,7 @@ let http = {
   delete: axios.delete,
   setJwt,
 };
+
+
+
 export default http;
