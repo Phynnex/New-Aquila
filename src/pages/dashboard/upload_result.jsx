@@ -5,6 +5,7 @@ import { checkExpiredUserToken } from "utils";
 import { Redirect } from "react-router-dom";
 import Backdrop from "@mui/material/Backdrop";
 import CircularProgress from "@mui/material/CircularProgress";
+import axios from "axios";
 
 const UploadResult = () => {
   // const classes=useStyles();
@@ -25,7 +26,7 @@ const UploadResult = () => {
     setisLoading(true);
 
     try {
-      const scan_request = await http.post(
+      const scan_request = await axios.post(
         `${process.env.REACT_APP_API_URL}t/api/scan/`,
         scanObject
       );

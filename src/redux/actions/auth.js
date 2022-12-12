@@ -1,6 +1,7 @@
 import http from "services/httpService";
 import { checkExpiredUserToken, getUserToken } from "utils";
 import { toast } from "react-toastify";
+import axios from "axios"
 
 import {
 
@@ -28,7 +29,7 @@ export const load_user = () => async (dispatch) => {
  const token  = getUserToken()
   if (token) {
     try {
-      const res = await http.get(
+      const res = await axios.get(
         `${process.env.REACT_APP_API_URL}/api/token/`,
       );
 
@@ -54,12 +55,12 @@ export const checkAuthenticated = () => async (dispatch) => {
   const token = getUserToken()
   
   if (token.access) {
-    http.setJwt(token.access)
+    axios.setJwt(token.access)
 
     const body = JSON.stringify({ refresh: token.refresh});
     
     try {
-      const res = await http.post(
+      const res = await axios.post(
         `${process.env.REACT_APP_API_URL}/api/token/refresh/`,
         body
       );
@@ -97,7 +98,7 @@ export const signup =
       confirmPassword};
 
     try {
-      const res = await http.post(
+      const res = await axios.post(
         `${process.env.REACT_APP_API_URL}/auth/register/`,
         body
       );
@@ -128,7 +129,7 @@ export const verify = (token) => async (dispatch) => {
   const body = { token };
 
   try {
-    await http.post(
+    await axios.post(
       `${process.env.REACT_APP_API_URL}/auth/email-verify/`, body
     );
 
@@ -146,7 +147,7 @@ export const reset_password = (email) => async (dispatch) => {
   const body = JSON.stringify({ email });
 
   try {
-    await http.post(
+    await axios.post(
       `${process.env.REACT_APP_API_URL}/auth/request-password-reset/`,
       body
     );
@@ -167,7 +168,7 @@ export const reset_password_confirm =
     const body = JSON.stringify({ uid, token, new_password, re_new_password });
 
     try {
-      await http.post(
+      await axios.post(
         `${process.env.REACT_APP_API_URL}auth/set-new-password/`,
         body
       );

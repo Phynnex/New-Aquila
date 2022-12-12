@@ -2,7 +2,7 @@ import { Fragment, useState, useEffect } from "react";
 import Modal from "react-modal";
 
 import styled from "styled-components";
-// import axios from "axios";
+import axios from "axios";
 // import { useFormik } from "formik"
 // import * as Yup from "yup"
 import { Button, P } from "../../../globalStyles/style";
@@ -110,7 +110,7 @@ const Upload = ({ location }) => {
   useEffect(() => {
     checkExpiredUserToken();
     async function fetchData() {
-      const request = await http.get(
+      const request = await axios.get(
         `${process.env.REACT_APP_API_URL}/api/projects/`
       );
 
@@ -136,7 +136,7 @@ const Upload = ({ location }) => {
 
   useEffect(() => {
     async function fetchData() {
-      const request = await http.get(`${process.env.REACT_APP_API_URL}/api/projects/`);
+      const request = await axios.get(`${process.env.REACT_APP_API_URL}/api/projects/`);
       // setProject_name(request.data);
       console.log(request.data, 'hello')
       return request;
@@ -158,7 +158,7 @@ const Upload = ({ location }) => {
     formData.append("file", file);
     formData.append("project_name", project_name);
     try {
-      const response2 = await http.post(
+      const response2 = await axios.post(
         `${process.env.REACT_APP_API_URL}/api/upload/`,
         formData,
         {
